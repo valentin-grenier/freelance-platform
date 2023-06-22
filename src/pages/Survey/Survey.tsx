@@ -1,10 +1,14 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, Params, useParams } from 'react-router-dom';
+
+type SurveyParams = {
+  questionNumber: string;
+};
 
 const Survey = () => {
-  const { questionNumber } = useParams();
+  const { questionNumber } = useParams<SurveyParams>();
 
   // Convert questionNumber into int
-  const questionNumberInt = parseInt(questionNumber);
+  const questionNumberInt = questionNumber ? parseInt(questionNumber) : 0;
 
   return (
     <div>

@@ -1,4 +1,4 @@
-import DefaultPicture from '../../assets/profile.png';
+import profileImage from '../../assets/profile.png';
 import Card from '../../components/Card/Card';
 import './Freelances.scss';
 
@@ -6,17 +6,17 @@ const freelanceProfiles = [
   {
     name: 'Jane Doe',
     jobTitle: 'Devops',
-    picture: DefaultPicture,
+    picture: profileImage,
   },
   {
     name: 'John Doe',
     jobTitle: 'Developpeur frontend',
-    picture: DefaultPicture,
+    picture: profileImage,
   },
   {
     name: 'Jeanne Biche',
     jobTitle: 'Développeuse Fullstack',
-    picture: DefaultPicture,
+    picture: profileImage,
   },
 ];
 
