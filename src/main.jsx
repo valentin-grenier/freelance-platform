@@ -7,8 +7,10 @@ import './index.scss';
 import Home from './pages/Home/';
 import Survey from './pages/Survey/Survey';
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import Error from './pages/Error/Error';
 import Freelances from './pages/Freelances/Freelances';
+import Results from './pages/Results/Results';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -18,8 +20,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/" element={<Home />} />
         <Route path="/survey/:questionNumber" element={<Survey />} />
         <Route path="/freelances" element={<Freelances />} />
+        <Route path="/results" element={<Results />} />
         <Route path="*" element={<Error />} />
       </Routes>
+      <Footer />
     </Router>
   </React.StrictMode>
 );
