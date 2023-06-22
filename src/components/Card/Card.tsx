@@ -1,7 +1,12 @@
 import './Card.scss';
-import PropTypes from 'prop-types';
 
-const Card = ({ jobTitle, name, picture }) => {
+interface TCard {
+  jobTitle: string;
+  name: string;
+  picture: string;
+}
+
+const Card = ({ jobTitle, name, picture }: TCard) => {
   return (
     <div className="card">
       <span>{jobTitle}</span>
@@ -9,12 +14,6 @@ const Card = ({ jobTitle, name, picture }) => {
       <span>{name}</span>
     </div>
   );
-};
-
-Card.propTypes = {
-  jobTitle: PropTypes.string,
-  name: PropTypes.string,
-  picture: PropTypes.string,
 };
 
 export default Card;
