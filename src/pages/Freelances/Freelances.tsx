@@ -1,37 +1,29 @@
 import { styled } from 'styled-components';
-import profileImage from '../../assets/profile.png';
 import Card from '../../components/Card/Card';
+import data from '../../data/data';
 
-const freelanceProfiles = [
-  {
-    name: 'Jane Doe',
-    jobTitle: 'Devops',
-    picture: profileImage,
-  },
-  {
-    name: 'John Doe',
-    jobTitle: 'Developpeur frontend',
-    picture: profileImage,
-  },
-  {
-    name: 'Jeanne Biche',
-    jobTitle: 'Développeuse Fullstack',
-    picture: profileImage,
-  },
-];
+export interface TData {
+  name: string;
+  jobTitle: string;
+  picture: string;
+}
 
 const CardsContainer = styled.div`
-  display: grid;
-  gap: 1.5em;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  justify-content: center;
 `;
 
 const Freelances = () => {
   return (
     <>
-      <h1>Freelances</h1>
+      <p>
+        Chez Shiny, nous trouvons les profils les plus adaptés à vos besoins
+      </p>
+      <h1>Trouvez votre freelance</h1>
       <CardsContainer>
-        {freelanceProfiles.map((profile, index) => (
+        {data.map((profile: TData, index: number) => (
           <Card
             key={`${profile.name}-${index}`}
             jobTitle={profile.jobTitle}
