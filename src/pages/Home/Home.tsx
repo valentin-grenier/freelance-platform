@@ -12,12 +12,14 @@ const HomeWrapper = styled.main`
   padding: 4em;
   text-align: left;
   border-radius: 2em;
+  height: 50vh;
 `;
 
 const ButtonWrapper = styled.main``;
 
 const HomeImage = styled.img`
-  max-width: 30em;
+  max-width: 20em;
+  height: auto;
 `;
 
 const Home = () => {
