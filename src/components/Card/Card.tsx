@@ -4,10 +4,17 @@ const CardContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 0 0 24px #00000035;
   padding: 1em;
-  box-shadow: 0 4px 24px #00000035;
   border-radius: 1em;
   width: 10em;
+  transition: 300ms;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(95%);
+    box-shadow: 0 0 12px #00000035;
+  }
 `;
 
 const CardJobTitle = styled.span`
