@@ -4,7 +4,7 @@ import colors from '../../utils/style/colors';
 import logo from '../../assets/light-logo.png';
 import Button from '../Button/Button';
 
-const HeaderContainer = styled.div`
+const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   margin-bottom: 4em;
@@ -33,21 +33,19 @@ const StyledLink = styled(Link)<StyledLinkProps>`
 
 const Header = () => {
   return (
-    <header>
-      <HeaderContainer>
-        <Link to="/">
-          <Logo src={logo} />
-        </Link>
-        <HeaderNav>
-          <StyledLink to="/">Accueil</StyledLink>
+    <HeaderContainer>
+      <Link to="/">
+        <Logo src={logo} />
+      </Link>
+      <HeaderNav>
+        <StyledLink to="/">Accueil</StyledLink>
 
-          <StyledLink to="/freelances">Nos freelances</StyledLink>
-          <StyledLink to="/survey/1">
-            <Button label="Faire le test" />
-          </StyledLink>
-        </HeaderNav>
-      </HeaderContainer>
-    </header>
+        <StyledLink to="/freelances">Nos freelances</StyledLink>
+        <StyledLink to="/survey/1">
+          <Button label="Faire le test" />
+        </StyledLink>
+      </HeaderNav>
+    </HeaderContainer>
   );
 };
 
