@@ -89,7 +89,7 @@ const Survey = () => {
   }, []);
 
   if (error) {
-    return <span>Oups il y a eu un problème</span>;
+    return <span>Oups, il y a eu un problème</span>;
   }
 
   return (

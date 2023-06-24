@@ -1,11 +1,15 @@
 import { styled } from 'styled-components';
 import Card from '../../components/Card/Card';
 import data from '../../data/data';
+import { useEffect, useState } from 'react';
+import { Loader } from '../Survey/Survey';
 
 export interface TData {
   name: string;
-  jobTitle: string;
+  job: string;
   picture: string;
+  available: boolean;
+  tjm: number;
 }
 
 const CardsContainer = styled.div`
@@ -16,22 +20,62 @@ const CardsContainer = styled.div`
 `;
 
 const Freelances = () => {
+  // State for API data
+  const [freelancersList, setFreelancersList] = useState([]);
+
+  // State for loader
+  const [dataLoading, setDataLoading] = useState(false);
+
+  // State for error
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Display loader
+        setDataLoading(true);
+
+        // Fetch data
+        const response = await fetch('http://localhost:8000/freelances');
+        const { freelancersList } = await response.json();
+
+        setFreelancersList(freelancersList);
+      } catch (error) {
+        console.log(error);
+        setError(true);
+      } finally {
+        setDataLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (error) {
+    return <span>Oups, il y a eu un problème</span>;
+  }
   return (
     <>
       <p>
         Chez Shiny, nous trouvons les profils les plus adaptés à vos besoins
       </p>
       <h1>Trouvez votre freelance</h1>
-      <CardsContainer>
-        {data.map((profile: TData, index: number) => (
-          <Card
-            key={`${profile.name}-${index}`}
-            jobTitle={profile.jobTitle}
-            picture={profile.picture}
-            name={profile.name}
-          />
-        ))}
-      </CardsContainer>
+      {dataLoading ? (
+        <Loader />
+      ) : (
+        <CardsContainer>
+          {freelancersList.map((profile: TData, index: number) => (
+            <Card
+              key={`${profile.name}-${index}`}
+              job={profile.job}
+              picture={profile.picture}
+              name={profile.name}
+              available={profile.available}
+              tjm={profile.tjm}
+            />
+          ))}
+        </CardsContainer>
+      )}
     </>
   );
 };
