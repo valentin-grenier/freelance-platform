@@ -7,7 +7,7 @@ import Button from '../Button/Button';
 const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 4em;
+  margin-bottom: 2em;
 `;
 
 const HeaderNav = styled.nav`
