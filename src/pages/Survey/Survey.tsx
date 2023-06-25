@@ -13,7 +13,7 @@ const LinksContainer = styled.div`
 const LinkNav = styled(Link)`
   transition: 400ms;
 
-  ${(props) => props.$isHidden && `opacity: 0.25;`}
+  ${(props) => props.$isFaded && `opacity: 0.25;`}
 `;
 
 const QuestionContainer = styled.h3`
@@ -121,37 +121,38 @@ const Survey = () => {
       {dataLoading ? (
         <Loader />
       ) : (
-        <QuestionContainer>{surveyData[questionNumber]}</QuestionContainer>
+        <>
+          <QuestionContainer>{surveyData[questionNumber]}</QuestionContainer>
+          <ReplyWrapper>
+            <ReplyBox
+              onClick={() => saveReply(true)}
+              $isSelected={answers[questionNumber] === true}
+            >
+              Oui
+            </ReplyBox>
+            <ReplyBox
+              onClick={() => saveReply(false)}
+              $isSelected={answers[questionNumber] === false}
+            >
+              Non
+            </ReplyBox>
+          </ReplyWrapper>
+
+          <LinksContainer>
+            {questionNumberInt === 1 ? (
+              <LinkNav $isFaded>Précédent</LinkNav>
+            ) : (
+              <LinkNav to={`/survey/${prevQuestionNumber}`}>Précédent</LinkNav>
+            )}
+
+            {surveyData[questionNumberInt + 1] ? (
+              <LinkNav to={`/survey/${nextQuestionNumber}`}>Suivant</LinkNav>
+            ) : (
+              <LinkNav to={`/results`}>Résultats</LinkNav>
+            )}
+          </LinksContainer>
+        </>
       )}
-
-      <ReplyWrapper>
-        <ReplyBox
-          onClick={() => saveReply(true)}
-          $isSelected={answers[questionNumber] === true}
-        >
-          Oui
-        </ReplyBox>
-        <ReplyBox
-          onClick={() => saveReply(false)}
-          $isSelected={answers[questionNumber] === false}
-        >
-          Non
-        </ReplyBox>
-      </ReplyWrapper>
-
-      <LinksContainer>
-        {questionNumberInt === 1 ? (
-          <LinkNav $isHidden>Précédent</LinkNav>
-        ) : (
-          <LinkNav to={`/survey/${prevQuestionNumber}`}>Précédent</LinkNav>
-        )}
-
-        {surveyData[questionNumberInt + 1] ? (
-          <LinkNav to={`/survey/${nextQuestionNumber}`}>Suivant</LinkNav>
-        ) : (
-          <LinkNav to={`/results`}>Résultats</LinkNav>
-        )}
-      </LinksContainer>
     </div>
   );
 };
