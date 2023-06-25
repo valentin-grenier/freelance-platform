@@ -13,7 +13,7 @@ import Footer from './components/Footer/Footer';
 import Error from './pages/Error/Error';
 import Freelances from './pages/Freelances/Freelances';
 import Results from './pages/Results/Results';
-import { SurveyProvider } from './utils/context/SurveyProvider.js';
+import { SurveyProvider } from './utils/context/SurveyProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 

@@ -8,11 +8,12 @@ const HomeWrapper = styled.main`
   display: flex;
   align-items: center;
   gap: 4em;
-  background: ${colors.backgroundLight};
+  background: ${colors.backgroundDarkAlt};
   padding: 4em;
   text-align: left;
   border-radius: 2em;
   height: 50vh;
+  box-shadow: 0 4px 24px #00000020;
 `;
 
 const ButtonWrapper = styled.main``;

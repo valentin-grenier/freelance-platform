@@ -1,16 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
-import { Link, Params, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { keyframes, styled } from 'styled-components';
 import colors from '../../utils/style/colors';
-import {
-  SurveyProvider,
-  SurveyContext,
-} from '../../utils/context/SurveyProvider';
-
-type SurveyParams = {
-  questionNumber: string;
-  questionNumberInt: any;
-};
+import { SurveyContext } from '../../utils/context/SurveyProvider';
 
 const LinksContainer = styled.div`
   display: flex;
@@ -135,13 +127,13 @@ const Survey = () => {
       <ReplyWrapper>
         <ReplyBox
           onClick={() => saveReply(true)}
-          isSelected={answers[questionNumber] === true}
+          $isSelected={answers[questionNumber] === true}
         >
           Oui
         </ReplyBox>
         <ReplyBox
           onClick={() => saveReply(false)}
-          isSelected={answers[questionNumber] === false}
+          $isSelected={answers[questionNumber] === false}
         >
           Non
         </ReplyBox>
