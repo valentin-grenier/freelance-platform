@@ -9,15 +9,15 @@ type Answer = {
 };
 
 type SurveyContextType = {
-  answers: Record<string, Answer>;
-  saveAnswers: (newAnswers: Record<string, Answer>) => void;
+  answers: Answer;
+  saveAnswers: (newAnswers: Answer) => void;
 };
 
 export const SurveyContext = createContext<SurveyContextType | null>(null);
 
 export const SurveyProvider = ({ children }: Props) => {
-  const [answers, setAnswers] = useState({});
-  const saveAnswers = (newAnswers: SetStateAction<{}>) => {
+  const [answers, setAnswers] = useState<Answer>({});
+  const saveAnswers = (newAnswers: Answer) => {
     setAnswers({ ...answers, ...newAnswers });
   };
 

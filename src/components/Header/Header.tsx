@@ -6,7 +6,7 @@ import logoLight from '../../assets/light-logo.png';
 import logoDark from '../../assets/dark-logo.png';
 import Button from '../Button/Button';
 import { BsFillMoonFill, BsFillLightbulbFill } from 'react-icons/bs';
-import { ThemeContext } from '../../utils/context/ThemeProvider';
+import { ThemeContext } from '../../utils/context/ThemeContext';
 
 const HeaderContainer = styled.header`
   display: flex;

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { SurveyContext } from '../../utils/context/SurveyProvider';
+import { SurveyContext } from '../../utils/context/SurveyContext';
 
 const Results = () => {
   const { answers } = useContext(SurveyContext);

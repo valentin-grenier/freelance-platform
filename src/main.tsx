@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 //import './index.scss';
 import GlobalStyles from './utils/style/GlobalStyle.jsx';
-import { ThemeProvider } from './utils/context/ThemeProvider';
+import { ThemeProvider } from './utils/context/ThemeContext.js';
 
 import Home from './pages/Home/Home';
 import Survey from './pages/Survey/Survey';
@@ -13,7 +13,7 @@ import Footer from './components/Footer/Footer';
 import Error from './pages/Error/Error';
 import Freelances from './pages/Freelances/Freelances';
 import Results from './pages/Results/Results';
-import { SurveyProvider } from './utils/context/SurveyProvider';
+import { SurveyProvider } from './utils/context/SurveyContext.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 

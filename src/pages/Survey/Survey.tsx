@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { keyframes, styled } from 'styled-components';
 import colors from '../../utils/style/colors';
-import { SurveyContext } from '../../utils/context/SurveyProvider';
+import { SurveyContext } from '../../utils/context/SurveyContext';
 
 const LinksContainer = styled.div`
   display: flex;
@@ -60,8 +60,12 @@ const ReplyBox = styled.button`
   cursor: pointer;
 `;
 
+type questionNumber = {
+  questionNumber?: string;
+};
+
 const Survey = () => {
-  const { questionNumber } = useParams();
+  const { questionNumber }: questionNumber = useParams();
 
   // Convert questionNumber into int
   const questionNumberInt = parseInt(questionNumber!);
@@ -83,8 +87,8 @@ const Survey = () => {
   // State for answers
   const { answers, saveAnswers } = useContext(SurveyContext);
 
-  const saveReply = (answer) => {
-    saveAnswers({ [questionNumber]: answer });
+  const saveReply = (answer: boolean) => {
+    saveAnswers({ [questionNumber!]: answer });
   };
 
   // Get survey data from API
