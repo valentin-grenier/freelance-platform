@@ -1,7 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, Params, useParams } from 'react-router-dom';
 import { keyframes, styled } from 'styled-components';
 import colors from '../../utils/style/colors';
+import {
+  SurveyProvider,
+  SurveyContext,
+} from '../../utils/context/SurveyProvider';
 
 type SurveyParams = {
   questionNumber: string;
@@ -45,6 +49,25 @@ export const Loader = styled.div`
   margin: 2em auto;
 `;
 
+const ReplyWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1em;
+  margin-bottom: 2em;
+`;
+
+const ReplyBox = styled.button`
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1em 2em;
+  background-color: ${colors.backgroundDarkAlt};
+  border-radius: 1em;
+  cursor: pointer;
+`;
+
 const Survey = () => {
   const { questionNumber } = useParams();
 
@@ -64,6 +87,13 @@ const Survey = () => {
 
   // State for error
   const [error, setError] = useState(false);
+
+  // State for answers
+  const { answers, saveAnswers } = useContext(SurveyContext);
+
+  const saveReply = (answer) => {
+    saveAnswers({ [questionNumber]: answer });
+  };
 
   // Get survey data from API
   useEffect(() => {
@@ -101,6 +131,21 @@ const Survey = () => {
       ) : (
         <QuestionContainer>{surveyData[questionNumber]}</QuestionContainer>
       )}
+
+      <ReplyWrapper>
+        <ReplyBox
+          onClick={() => saveReply(true)}
+          isSelected={answers[questionNumber] === true}
+        >
+          Oui
+        </ReplyBox>
+        <ReplyBox
+          onClick={() => saveReply(false)}
+          isSelected={answers[questionNumber] === false}
+        >
+          Non
+        </ReplyBox>
+      </ReplyWrapper>
 
       <LinksContainer>
         {questionNumberInt === 1 ? (

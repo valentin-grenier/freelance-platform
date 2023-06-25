@@ -7,7 +7,7 @@ const CardContent = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  background: ${colors.backgroundLight};
+  background: ${colors.backgroundDarkAlt};
   box-shadow: 0 0 24px #00000035;
   padding: 1em;
   border-radius: 1em;
@@ -32,25 +32,13 @@ const CardName = styled.h3`
   margin: 0 auto 0.5em auto;
 `;
 
-const CardAvailability = styled.span`
-  font-size: 0.8em;
-  background: ${colors.secondary};
-  padding: 0.25em 0.5em;
-  border-radius: 0.5em;
-  position: absolute;
-  top: -0.5em;
-  right: -1em;
-`;
-
 interface TCard {
   picture: string;
   job: string;
   name: string;
-  available: boolean;
-  tjm: number;
 }
 
-const Card = ({ job, name, picture, available, tjm }: TCard) => {
+const Card = ({ job, name, picture }: TCard) => {
   return (
     <CardContent>
       <CardImage src={picture} alt="freelance" height={80} width={80} />

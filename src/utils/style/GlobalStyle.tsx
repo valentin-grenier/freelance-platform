@@ -1,15 +1,19 @@
+import { useContext } from 'react';
 import { createGlobalStyle } from 'styled-components';
 import colors from './colors';
+import { ThemeContext } from '../context/ThemeProvider';
 
-const GlobalStyles = createGlobalStyle`
+const StyledGlobalStyle = createGlobalStyle`
   :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
 
     color-scheme: light dark;
-    background: ${colors.background};
-    color: ${colors.primary};
+    background: ${({ isDarkMode }) =>
+      isDarkMode ? colors.backgroundDark : colors.backgroundLight};
+    color: ${({ isDarkMode }) =>
+      isDarkMode ? colors.primary : colors.backgroundDark};
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -28,12 +32,13 @@ const GlobalStyles = createGlobalStyle`
   }
 
   a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-  }
-  a:hover {
-    color: #535bf2;
+    font-weight: 500;
+    color: #646cff;
+    text-decoration: inherit;
+
+    &:hover {
+      color: #535bf2;
+    }
   }
 
   button {
@@ -46,16 +51,23 @@ const GlobalStyles = createGlobalStyle`
     background-color: #1a1a1a;
     cursor: pointer;
     transition: border-color 0.25s;
+
+    &:hover {
+      border-color: #646cff;
+    }
+
+    &:focus, &:focus-visible {
+      outline: 4px auto -webkit-focus-ring-color;
+    }
   }
 
-  button:hover {
-    border-color: #646cff;
+  nav {
+    a {
+      color: ${({ isDarkMode }) =>
+        isDarkMode ? colors.primary : colors.backgroundDark};
+    }
   }
 
-  button:focus,
-  button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
-  }
 
   #root {
     max-width: 1280px;
@@ -65,4 +77,9 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-export default GlobalStyles;
+function GlobalStyle() {
+  const { theme } = useContext(ThemeContext);
+  return <StyledGlobalStyle isDarkMode={theme === 'dark'} />;
+}
+
+export default GlobalStyle;

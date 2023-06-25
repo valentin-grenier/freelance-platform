@@ -1,6 +1,5 @@
 import { styled } from 'styled-components';
 import Card from '../../components/Card/Card';
-import data from '../../data/data';
 import { useEffect, useState } from 'react';
 import { Loader } from '../Survey/Survey';
 
@@ -54,6 +53,10 @@ const Freelances = () => {
   if (error) {
     return <span>Oups, il y a eu un problème</span>;
   }
+
+  // Debug
+  //console.log(freelancersList);
+
   return (
     <>
       <p>
